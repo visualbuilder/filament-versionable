@@ -3,8 +3,8 @@
 namespace Visualbuilder\FilamentVersionable\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Visualbuilder\Versionable\VersionStrategy;
 use Visualbuilder\Versionable\Versionable;
+use Visualbuilder\Versionable\VersionStrategy;
 
 class Post extends Model
 {
