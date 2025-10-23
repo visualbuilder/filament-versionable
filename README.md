@@ -1,6 +1,4 @@
-<div align="center">
-    <img width="100px" height="100px" src="./resources/icon.png"/>
-</div>
+
 
 # Filament Versionable (Polymorphic User Fork)
 
