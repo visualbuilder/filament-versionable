@@ -1,6 +1,6 @@
 <?php
 
-namespace Mansoor\FilamentVersionable;
+namespace Visualbuilder\FilamentVersionable;
 
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Concerns\InteractsWithRecord;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Attributes\Computed;
 use Livewire\WithPagination;
-use Overtrue\LaravelVersionable\Version;
+use Visualbuilder\Versionable\Version;
 
 class RevisionsPage extends Page
 {

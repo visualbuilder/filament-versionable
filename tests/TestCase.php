@@ -1,6 +1,6 @@
 <?php
 
-namespace Mansoor\FilamentVersionable\Tests;
+namespace Visualbuilder\FilamentVersionable\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -9,51 +9,70 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
-use Filament\SpatieLaravelSettingsPluginServiceProvider;
-use Filament\SpatieLaravelTranslatablePluginServiceProvider;
+use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Config;
 use Livewire\LivewireServiceProvider;
-use Mansoor\FilamentVersionable\FilamentVersionableServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
+use Visualbuilder\FilamentVersionable\FilamentVersionableServiceProvider;
+use Visualbuilder\FilamentVersionable\Tests\Models\User;
+use Visualbuilder\Versionable\ServiceProvider as VersionableServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Mansoor\\FilamentVersionable\\Database\\Factories\\'.class_basename($modelName).'Factory'
+        $this->actingAs(
+            User::create(['email' => 'admin@domain.com', 'name' => 'Admin', 'password' => 'password'])
         );
+
+        Config::set('auth.providers.users.model', User::class);
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
-            ActionsServiceProvider::class,
+            FilamentVersionableServiceProvider::class,
+            VersionableServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
+            LivewireServiceProvider::class,
+            FilamentServiceProvider::class,
+            SupportServiceProvider::class,
+            SchemasServiceProvider::class,
+            FormsServiceProvider::class,
+            TablesServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
-            FilamentServiceProvider::class,
-            FormsServiceProvider::class,
-            InfolistsServiceProvider::class,
-            LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
-            // SpatieLaravelSettingsPluginServiceProvider::class,
-            // SpatieLaravelTranslatablePluginServiceProvider::class,
-            SupportServiceProvider::class,
-            TablesServiceProvider::class,
+            InfolistsServiceProvider::class,
+            AdminPanelProvider::class,
+            ActionsServiceProvider::class,
             WidgetsServiceProvider::class,
-            FilamentVersionableServiceProvider::class,
         ];
+    }
+
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadLaravelMigrations();
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+
+        $app['config']->set('database.connections.testing', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
     }
 }

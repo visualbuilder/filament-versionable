@@ -1,6 +1,6 @@
 <?php
 
-namespace Mansoor\FilamentVersionable;
+namespace Visualbuilder\FilamentVersionable;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

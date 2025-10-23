@@ -1,5 +1,5 @@
 <?php
 
-use Mansoor\FilamentVersionable\Tests\TestCase;
+use Visualbuilder\FilamentVersionable\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

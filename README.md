@@ -2,14 +2,15 @@
     <img width="100px" height="100px" src="./resources/icon.png"/>
 </div>
 
-# Filament Versionable
+# Filament Versionable (Polymorphic User Fork)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mansoor/filament-versionable.svg?style=flat-square)](https://packagist.org/packages/mansoor/filament-versionable)
-[![run-tests](https://github.com/mansoorkhan96/filament-versionable/actions/workflows/run-tests.yml/badge.svg)](https://github.com/mansoorkhan96/filament-versionable/actions/workflows/run-tests.yml)
-[![GitHub Code Style Action Status](https://github.com/mansoorkhan96/filament-versionable/actions/workflows/fix-php-code-styling.yml/badge.svg)](https://github.com/mansoorkhan96/filament-versionable/actions/workflows/fix-php-code-styling.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/mansoor/filament-versionable.svg?style=flat-square)](https://packagist.org/packages/mansoor/filament-versionable)
+**Fork of [mansoor/filament-versionable](https://github.com/mansoorkhan96/filament-versionable) with polymorphic user support**
 
-Efforlessly manage your Eloquent model revisions in Filament. It includes:
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/visualbuilder/filament-versionable.svg?style=flat-square)](https://packagist.org/packages/visualbuilder/filament-versionable)
+
+This fork uses [visualbuilder/versionable](https://github.com/visualbuilder/versionable) which supports polymorphic user relationships, enabling version tracking across multiple user model types (User, Admin, Associate, EndUser, OrganisationUser, etc.).
+
+Effortlessly manage your Eloquent model revisions in Filament. It includes:
 
 - A Filament page to show the Diff of what has changed and who changed it
 - A list of Revisions by different users
@@ -22,13 +23,13 @@ Efforlessly manage your Eloquent model revisions in Filament. It includes:
 You can install the package via composer:
 
 ```bash
-composer require mansoor/filament-versionable
+composer require visualbuilder/filament-versionable
 ```
 
 Then, publish the config file and migrations:
 
 ```bash
-php artisan vendor:publish --provider="Overtrue\LaravelVersionable\ServiceProvider"
+php artisan vendor:publish --provider="Visualbuilder\Versionable\ServiceProvider"
 ```
 
 Run the migration command:
@@ -43,22 +44,22 @@ php artisan migrate
 After setting up a custom theme add the plugin's views and css to your theme css file.
 
 ```css
-@import '../../../../vendor/mansoor/filament-versionable/resources/css/plugin.css';
-@source '../../../../vendor/mansoor/filament-versionable/resources/**/*.blade.php';
+@import '../../../../vendor/visualbuilder/filament-versionable/resources/css/plugin.css';
+@source '../../../../vendor/visualbuilder/filament-versionable/resources/**/*.blade.php';
 ```
 
 ## Usage
 
-Add `Overtrue\LaravelVersionable\Versionable` trait to your model and set `$versionable` attributes.
+Add `Visualbuilder\Versionable\Versionable` trait to your model and set `$versionable` attributes.
 
 **NOTE: Make sure to add `protected $versionStrategy = VersionStrategy::SNAPSHOT;` This would save all the $versionable attributes when any of them changed. There are different bug reports on using VersionStrategy::DIFF**
 
 ```php
-use Overtrue\LaravelVersionable\VersionStrategy;
+use Visualbuilder\Versionable\VersionStrategy;
 
 class Post extends Model
 {
-    use Overtrue\LaravelVersionable\Versionable;
+    use Visualbuilder\Versionable\Versionable;
 
     protected $versionable = ['title', 'content'];
 
@@ -66,13 +67,13 @@ class Post extends Model
 }
 ```
 
-Create a Revisons Resource page to show Revisions, it should extend the `Mansoor\FilamentVersionable\RevisionsPage`. If you were to create a Revisions page for `ArticleResource`, it would look like:
+Create a Revisons Resource page to show Revisions, it should extend the `Visualbuilder\FilamentVersionable\RevisionsPage`. If you were to create a Revisions page for `ArticleResource`, it would look like:
 
 ```php
 namespace App\Filament\Resources\ArticleResource\Pages;
 
 use App\Filament\Resources\ArticleResource;
-use Mansoor\FilamentVersionable\RevisionsPage;
+use Visualbuilder\FilamentVersionable\RevisionsPage;
 
 class ArticleRevisions extends RevisionsPage
 {
@@ -97,7 +98,7 @@ public static function getPages(): array
 Add `RevisionsAction` to your edit/view pages, this action would only appear when there are any versions for the model you are viewing/editing.
 
 ```php
-use Mansoor\FilamentVersionable\Page\RevisionsAction;
+use Visualbuilder\FilamentVersionable\Page\RevisionsAction;
 
 protected function getHeaderActions(): array
 {
@@ -110,7 +111,7 @@ protected function getHeaderActions(): array
 You can also add the `RevisionsAction` to your table.
 
 ```php
-use Mansoor\FilamentVersionable\Table\RevisionsAction;
+use Visualbuilder\FilamentVersionable\Table\RevisionsAction;
 
 $table->actions([
     RevisionsAction::make(),
@@ -127,7 +128,7 @@ If you want to change the UI for Revisions page, you may publish the publish the
 php artisan vendor:publish --tag="filament-versionable-views"
 ```
 
-If you want more control over how the versions are stored, you may read the [Laravel Versionable Docs](https://github.com/overtrue/laravel-versionable).
+If you want more control over how the versions are stored, you may read the [Visualbuilder Versionable Docs](https://github.com/visualbuilder/versionable) (based on overtrue/laravel-versionable).
 
 ## Strip Tags from Diff
 
