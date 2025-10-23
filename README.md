@@ -1,10 +1,9 @@
-
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/visualbuilder/filament-versionable.svg?style=flat-square)](https://packagist.org/packages/visualbuilder/filament-versionable)
+[![run-tests](https://github.com/visualbuilder/filament-versionable/actions/workflows/run-tests.yml/badge.svg?branch=4.x)](https://github.com/visualbuilder/filament-versionable/actions/workflows/run-tests.yml)
 
 # Filament Versionable (Polymorphic User Fork)
 
 **Fork of [mansoor/filament-versionable](https://github.com/mansoorkhan96/filament-versionable) with polymorphic user support**
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/visualbuilder/filament-versionable.svg?style=flat-square)](https://packagist.org/packages/visualbuilder/filament-versionable)
 
 This fork uses [visualbuilder/versionable](https://github.com/visualbuilder/versionable) which supports polymorphic user relationships, enabling version tracking across multiple user model types (User, Admin, Associate, EndUser, OrganisationUser, etc.).
 
