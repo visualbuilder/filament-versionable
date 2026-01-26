@@ -15,12 +15,23 @@ Effortlessly manage your Eloquent model revisions in Filament. It includes:
 
 ![](./resources/screenshot.png)
 
+## Version Compatibility
+
+| Package Version | Filament | Laravel | PHP |
+|-----------------|----------|---------|-----|
+| 5.x | 5.x | 11.x, 12.x | 8.2+ |
+| 4.x | 4.x | 11.x | 8.2+ |
+
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require visualbuilder/filament-versionable
+# For Filament 5.x
+composer require visualbuilder/filament-versionable:^5.0
+
+# For Filament 4.x
+composer require visualbuilder/filament-versionable:^4.0
 ```
 
 Then, publish the config file and migrations:
