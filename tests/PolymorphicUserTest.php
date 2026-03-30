@@ -4,6 +4,7 @@ use Visualbuilder\FilamentVersionable\Tests\Models\Admin;
 use Visualbuilder\FilamentVersionable\Tests\Models\OrganisationUser;
 use Visualbuilder\FilamentVersionable\Tests\Models\Post;
 use Visualbuilder\FilamentVersionable\Tests\Models\User;
+use Visualbuilder\Versionable\Version;
 
 uses()->group('polymorphic');
 
@@ -40,7 +41,7 @@ it('eager loads polymorphic user relationships correctly', function () {
     $post2 = Post::create(['title' => 'Post 2', 'content' => 'Content 2']);
 
     // Load versions with eager loading
-    $versions = \Visualbuilder\Versionable\Version::with('user')->get();
+    $versions = Version::with('user')->get();
 
     $version1 = $versions->firstWhere('versionable_id', $post1->id);
     $version2 = $versions->firstWhere('versionable_id', $post2->id);

@@ -6,6 +6,8 @@ namespace Visualbuilder\FilamentVersionable\Tests;
 
 use Filament\Actions\Action;
 use Filament\Resources\Pages\Page;
+use Illuminate\View\View;
+use Visualbuilder\FilamentVersionable\FilamentVersionableServiceProvider;
 use Visualbuilder\FilamentVersionable\Page\RevisionsAction as PageRevisionsAction;
 use Visualbuilder\FilamentVersionable\RevisionsPage;
 use Visualbuilder\FilamentVersionable\Table\RevisionsAction as TableRevisionsAction;
@@ -157,7 +159,7 @@ describe('Filament 5 Compatibility Tests', function () {
 
         $view = $page->render();
 
-        expect($view)->toBeInstanceOf(\Illuminate\View\View::class);
+        expect($view)->toBeInstanceOf(View::class);
         expect($view->name())->toBe('filament-versionable::revisions-page');
     });
 
@@ -170,7 +172,7 @@ describe('Filament 5 Compatibility Tests', function () {
     });
 
     it('revisions page has correct view property', function () {
-        $page = new RevisionsPage();
+        $page = new RevisionsPage;
         $reflection = new \ReflectionClass($page);
         $property = $reflection->getProperty('view');
         $property->setAccessible(true);
@@ -180,10 +182,10 @@ describe('Filament 5 Compatibility Tests', function () {
 
     it('verifies no usage of deprecated schemas namespace in source code', function () {
         $sourceFiles = [
-            __DIR__ . '/../src/FilamentVersionableServiceProvider.php',
-            __DIR__ . '/../src/Page/RevisionsAction.php',
-            __DIR__ . '/../src/Table/RevisionsAction.php',
-            __DIR__ . '/../src/RevisionsPage.php',
+            __DIR__.'/../src/FilamentVersionableServiceProvider.php',
+            __DIR__.'/../src/Page/RevisionsAction.php',
+            __DIR__.'/../src/Table/RevisionsAction.php',
+            __DIR__.'/../src/RevisionsPage.php',
         ];
 
         foreach ($sourceFiles as $file) {
@@ -209,7 +211,7 @@ describe('Filament 5 Compatibility Tests', function () {
     })->note('This test verifies all Filament imports are from stable APIs');
 
     it('package service provider properly registers views and assets', function () {
-        expect(\Visualbuilder\FilamentVersionable\FilamentVersionableServiceProvider::class)
+        expect(FilamentVersionableServiceProvider::class)
             ->toHaveMethod('configurePackage');
     });
 
