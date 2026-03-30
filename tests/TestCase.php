@@ -17,7 +17,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 use Visualbuilder\FilamentVersionable\FilamentVersionableServiceProvider;
 use Visualbuilder\FilamentVersionable\Tests\Models\User;
 use Visualbuilder\Versionable\ServiceProvider as VersionableServiceProvider;
@@ -42,7 +41,6 @@ class TestCase extends Orchestra
         return [
             FilamentVersionableServiceProvider::class,
             VersionableServiceProvider::class,
-            BladeCaptureDirectiveServiceProvider::class,
             LivewireServiceProvider::class,
             FilamentServiceProvider::class,
             SupportServiceProvider::class,
