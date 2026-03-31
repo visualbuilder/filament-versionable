@@ -1,5 +1,5 @@
 ![Packagist Version](https://img.shields.io/packagist/v/visualbuilder/filament-versionable)
-[![run-tests](https://github.com/visualbuilder/filament-versionable/actions/workflows/run-tests.yml/badge.svg?branch=4.x)](https://github.com/visualbuilder/filament-versionable/actions/workflows/run-tests.yml)
+[![run-tests](https://github.com/visualbuilder/filament-versionable/actions/workflows/run-tests.yml/badge.svg?branch=5.x)](https://github.com/visualbuilder/filament-versionable/actions/workflows/run-tests.yml)
 
 # Filament Versionable (Polymorphic User Fork)
 
