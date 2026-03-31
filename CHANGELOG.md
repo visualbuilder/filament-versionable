@@ -2,6 +2,31 @@
 
 All notable changes to `filament-versionable` will be documented in this file.
 
+## v5.0.0 - 2026-03-31
+
+### What's Changed
+
+* **Filament 5.x compatibility** - Upgraded to Filament 5.x with full backward compatibility
+* **Livewire 4.x support** - Updated to Livewire 4.2.3
+* **Pest 4.x testing** - Upgraded test suite to Pest 4.x
+* **PHPUnit 12.x** - Updated to PHPUnit 12.x
+* **ZERO breaking changes** - All existing features work without modifications
+* **29 tests passing** - Comprehensive test suite validates full compatibility
+
+### Technical Details
+
+- Updated `filament/filament` from ^4.0 to ^5.0
+- Updated `pestphp/pest` from ^3.7 to ^4.0
+- Updated `pestphp/pest-plugin-arch` from ^3.0 to ^4.0
+- Updated `pestphp/pest-plugin-laravel` from ^3.0 to ^4.0
+- Verified Filament\Schemas\ namespace remains available (not a breaking change)
+- All production code uses stable Filament APIs (Actions, Resources, Pages)
+- Test suite confirms polymorphic user support works flawlessly
+
+**Related:** NB-2062 - Filament 5 compatibility testing
+
+**Full Changelog**: https://github.com/visualbuilder/filament-versionable/compare/v0.0.13...v5.0.0
+
 ## v0.0.13 - 2025-03-28
 
 ### What's Changed

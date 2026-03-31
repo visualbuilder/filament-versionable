@@ -7,6 +7,13 @@
 
 This fork uses [visualbuilder/versionable](https://github.com/visualbuilder/versionable) which supports polymorphic user relationships, enabling version tracking across multiple user model types (User, Admin, Associate, EndUser, OrganisationUser, etc.).
 
+## Version Compatibility
+
+| Filament Version | Package Version |
+|-----------------|-----------------|
+| 4.x | ^4.0 |
+| 5.x | ^5.0 |
+
 Effortlessly manage your Eloquent model revisions in Filament. It includes:
 
 - A Filament page to show the Diff of what has changed and who changed it
@@ -36,7 +43,7 @@ php artisan migrate
 ```
 
 > [!IMPORTANT]
-> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) first.
+> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/styling/overview#creating-a-custom-theme) first.
 
 After setting up a custom theme add the plugin's views and css to your theme css file.
 
