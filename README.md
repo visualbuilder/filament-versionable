@@ -9,10 +9,11 @@ This fork uses [visualbuilder/versionable](https://github.com/visualbuilder/vers
 
 ## Version Compatibility
 
-| Filament Version | Package Version |
-|-----------------|-----------------|
-| 4.x | ^4.0 |
-| 5.x | ^5.0 |
+| Package Version | Filament | Laravel | PHP |
+|-----------------|----------|---------|-----|
+| 5.x | 5.x | 11.x, 12.x | 8.2+ |
+| 4.x | 4.x | 10.x, 11.x | 8.2+ |
+
 
 Effortlessly manage your Eloquent model revisions in Filament. It includes:
 
