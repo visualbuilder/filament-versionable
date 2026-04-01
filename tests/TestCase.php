@@ -15,7 +15,10 @@ use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ViewErrorBag;
 use Livewire\LivewireServiceProvider;
+use Livewire\Mechanisms\DataStore;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Visualbuilder\FilamentVersionable\FilamentVersionableServiceProvider;
 use Visualbuilder\FilamentVersionable\Tests\Models\User;
@@ -32,6 +35,10 @@ class TestCase extends Orchestra
         $this->actingAs(
             User::create(['email' => 'admin@domain.com', 'name' => 'Admin', 'password' => 'password'])
         );
+
+        View::share('errors', new ViewErrorBag);
+        $dataStore = app(DataStore::class);
+        app()->instance(DataStore::class, $dataStore);
 
         Config::set('auth.providers.users.model', User::class);
     }

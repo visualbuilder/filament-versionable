@@ -2,9 +2,9 @@ name: run-tests
 
 on:
   push:
-    branches: [4.x]
+    branches: [5.x]
   pull_request:
-    branches: [4.x]
+    branches: [5.x]
 
 jobs:
   test:
@@ -16,15 +16,15 @@ jobs:
         php: [8.2,8.3,8.4]
         laravel: [11.*,12.*]
         stability: [ prefer-stable ]
-        filament: [4.*]
+        filament: [5.*]
         dependency-version: [ prefer-stable]
         include:
           -   laravel: 11.*
               testbench: 9.*
-              filament: 4.*
+              filament: 5.*
           -   laravel: 12.*
               testbench: 10.*
-              filament: 4.*
+              filament: 5.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}  - ${{ matrix.dependency-version }}
 
