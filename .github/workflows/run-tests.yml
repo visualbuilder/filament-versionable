@@ -10,11 +10,11 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
         php: [8.3,8.4]
-        laravel: [11.*,12.*]
+        laravel: [11.*,12.*,13.*]
         stability: [ prefer-stable ]
         filament: [5.*]
         dependency-version: [ prefer-stable]
@@ -24,6 +24,9 @@ jobs:
               filament: 5.*
           -   laravel: 12.*
               testbench: 10.*
+              filament: 5.*
+          -   laravel: 13.*
+              testbench: 11.*
               filament: 5.*
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}  - ${{ matrix.dependency-version }}
